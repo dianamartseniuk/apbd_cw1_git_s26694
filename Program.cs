@@ -15,6 +15,7 @@ while (isRunning)
     Console.WriteLine("2. Add task");
     Console.WriteLine("3. Remove task");
     Console.WriteLine("4. Complete task");
+    Console.WriteLine("5. Edit task");
     Console.WriteLine("0. Exit");
     Console.Write("Choose an option: ");
 
@@ -41,6 +42,10 @@ while (isRunning)
 
         case "4":
             CompleteTask(tasks);
+            break;
+
+        case "5":
+            EditTask(tasks);
             break;
         
         default:
@@ -136,4 +141,9 @@ static void CompleteTask(List<TodoTask> tasks)
 
     tasks[taskNumber - 1].IsCompleted = true;
     Console.WriteLine("Task marked as completed.");
+}
+
+static void EditTask(List<TodoTask> tasks)
+{
+    Console.WriteLine("Edit task option selected.");
 }
