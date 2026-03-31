@@ -14,6 +14,7 @@ while (isRunning)
     Console.WriteLine("1. Show tasks");
     Console.WriteLine("2. Add task");
     Console.WriteLine("3. Remove task");
+    Console.WriteLine("4. Complete task");
     Console.WriteLine("0. Exit");
     Console.Write("Choose an option: ");
 
@@ -37,6 +38,10 @@ while (isRunning)
         case "3":
             RemoveTask(tasks);
             break;
+
+        case "4":
+            CompleteTask(tasks);
+            break;
         
         default:
         Console.WriteLine("Invalid option. Please choose 0, 1 or 2.");
@@ -58,7 +63,8 @@ static void ShowTasks(List<TodoTask> tasks)
 
     for (int i = 0; i < tasks.Count; i++)
     {
-        Console.WriteLine($"{i + 1}. {tasks[i].Title}");
+        string status = tasks[i].IsCompleted ? "[x]" : "[ ]";
+        Console.WriteLine($"{i + 1}. {status} {tasks[i].Title}");
     }
 }
 
@@ -103,4 +109,31 @@ static void RemoveTask(List<TodoTask> tasks)
     tasks.RemoveAt(taskNumber - 1);
 
     Console.WriteLine("Task removed.");
+}
+
+static void CompleteTask(List<TodoTask> tasks)
+{
+    if (tasks.Count == 0)
+    {
+        Console.WriteLine("Task list is empty.");
+        return;
+    }
+
+    Console.Write("Enter task number to mark as completed: ");
+    string? input = Console.ReadLine();
+
+    if (!int.TryParse(input, out int taskNumber))
+    {
+        Console.WriteLine("Invalid number.");
+        return;
+    }
+
+    if (taskNumber < 1 || taskNumber > tasks.Count)
+    {
+        Console.WriteLine("Task number out of range.");
+        return;
+    }
+
+    tasks[taskNumber - 1].IsCompleted = true;
+    Console.WriteLine("Task marked as completed.");
 }
