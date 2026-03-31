@@ -113,7 +113,7 @@ static void RemoveTask(List<TodoTask> tasks)
 
     tasks.RemoveAt(taskNumber - 1);
 
-    Console.WriteLine("Selected task has been deleted.");
+    Console.WriteLine("Task removed successfully.");
 }
 
 static void CompleteTask(List<TodoTask> tasks)
