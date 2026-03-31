@@ -10,7 +10,7 @@ bool isRunning = true;
 
 while (isRunning)
 {
-    Console.WriteLine("=== TO DO APP ===");
+    Console.WriteLine("=== TO DO LIST APPLICATION ===");
     Console.WriteLine("1. Show tasks");
     Console.WriteLine("2. Add task");
     Console.WriteLine("3. Remove task");
