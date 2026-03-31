@@ -7,6 +7,8 @@ List<TodoTask> tasks = new()
 };
 
 ShowTasks(tasks);
+AddTask(tasks);
+ShowTasks(tasks);
 
 static void ShowTasks(List<TodoTask> tasks)
 {
@@ -22,4 +24,19 @@ static void ShowTasks(List<TodoTask> tasks)
     {
         Console.WriteLine($"{i + 1}. {tasks[i].Title}");
     }
+}
+
+static void AddTask(List<TodoTask> tasks)
+{
+    Console.Write("Enter task title: ");
+    string? title = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(title))
+    {
+        Console.WriteLine("Task title cannot be empty.");
+        return;
+    }
+
+    tasks.Add(new TodoTask(title));
+    Console.WriteLine("Task added.");
 }
