@@ -145,5 +145,20 @@ static void CompleteTask(List<TodoTask> tasks)
 
 static void EditTask(List<TodoTask> tasks)
 {
-    Console.WriteLine("Edit task option selected.");
+    if (tasks.Count == 0)
+    {
+        Console.WriteLine("Task list is empty.");
+        return;
+    }
+
+    Console.Write("Enter task number to edit: ");
+    string? input = Console.ReadLine();
+
+    int taskNumber = int.Parse(input!);
+
+    Console.Write("Enter new task title: ");
+    string? newTitle = Console.ReadLine();
+
+    tasks[taskNumber - 1].Title = newTitle!;
+    Console.WriteLine("Task updated.");
 }
