@@ -32,7 +32,13 @@ while (isRunning)
         case "0":
             isRunning = false;
             break;
+        
+        default:
+        Console.WriteLine("Invalid option. Please choose 0, 1 or 2.");
+        break;
     }
+
+    Console.WriteLine();
 }
 
 static void ShowTasks(List<TodoTask> tasks)
