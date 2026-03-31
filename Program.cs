@@ -55,7 +55,7 @@ static void ShowTasks(List<TodoTask> tasks)
 {
     if (tasks.Count == 0)
     {
-        Console.WriteLine("Task list is empty.");
+        Console.WriteLine("There are no tasks to display.");
         return;
     }
 
