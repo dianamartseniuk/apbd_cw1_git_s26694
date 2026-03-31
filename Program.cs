@@ -49,7 +49,7 @@ while (isRunning)
             break;
         
         default:
-        Console.WriteLine("Invalid option. Please choose 0, 1 or 2.");
+        Console.WriteLine("Invalid option. Please choose 0, 1, 2, 3, 4 or 5.");
         break;
     }
 
@@ -154,11 +154,27 @@ static void EditTask(List<TodoTask> tasks)
     Console.Write("Enter task number to edit: ");
     string? input = Console.ReadLine();
 
-    int taskNumber = int.Parse(input!);
+    if (!int.TryParse(input, out int taskNumber))
+    {
+        Console.WriteLine("Invalid number.");
+        return;
+    }
+
+    if (taskNumber < 1 || taskNumber > tasks.Count)
+    {
+        Console.WriteLine("Task number out of range.");
+        return;
+    }
 
     Console.Write("Enter new task title: ");
     string? newTitle = Console.ReadLine();
 
-    tasks[taskNumber - 1].Title = newTitle!;
+    if (string.IsNullOrWhiteSpace(newTitle))
+    {
+        Console.WriteLine("Task title cannot be empty.");
+        return;
+    }
+
+    tasks[taskNumber - 1].Title = newTitle;
     Console.WriteLine("Task updated.");
 }
