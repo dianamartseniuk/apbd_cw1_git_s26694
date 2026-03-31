@@ -13,6 +13,7 @@ while (isRunning)
     Console.WriteLine("=== TO DO APP ===");
     Console.WriteLine("1. Show tasks");
     Console.WriteLine("2. Add task");
+    Console.WriteLine("3. Remove task");
     Console.WriteLine("0. Exit");
     Console.Write("Choose an option: ");
 
@@ -31,6 +32,10 @@ while (isRunning)
 
         case "0":
             isRunning = false;
+            break;
+
+        case "3":
+            RemoveTask(tasks);
             break;
         
         default:
@@ -70,4 +75,32 @@ static void AddTask(List<TodoTask> tasks)
 
     tasks.Add(new TodoTask(title));
     Console.WriteLine("Task added.");
+}
+
+static void RemoveTask(List<TodoTask> tasks)
+{
+    if (tasks.Count == 0)
+    {
+        Console.WriteLine("Task list is empty.");
+        return;
+    }
+
+    Console.Write("Enter task number to remove: ");
+    string? input = Console.ReadLine();
+
+    if (!int.TryParse(input, out int taskNumber))
+    {
+        Console.WriteLine("Invalid number.");
+        return;
+    }
+
+    if (taskNumber < 1 || taskNumber > tasks.Count)
+    {
+        Console.WriteLine("Task number out of range.");
+        return;
+    }
+
+    tasks.RemoveAt(taskNumber - 1);
+
+    Console.WriteLine("Task removed.");
 }
