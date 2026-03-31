@@ -6,9 +6,34 @@ List<TodoTask> tasks = new()
     new TodoTask("Finish homework")
 };
 
-ShowTasks(tasks);
-AddTask(tasks);
-ShowTasks(tasks);
+bool isRunning = true;
+
+while (isRunning)
+{
+    Console.WriteLine("=== TO DO APP ===");
+    Console.WriteLine("1. Show tasks");
+    Console.WriteLine("2. Add task");
+    Console.WriteLine("0. Exit");
+    Console.Write("Choose an option: ");
+
+    string? choice = Console.ReadLine();
+    Console.WriteLine();
+
+    switch (choice)
+    {
+        case "1":
+            ShowTasks(tasks);
+            break;
+
+        case "2":
+            AddTask(tasks);
+            break;
+
+        case "0":
+            isRunning = false;
+            break;
+    }
+}
 
 static void ShowTasks(List<TodoTask> tasks)
 {
